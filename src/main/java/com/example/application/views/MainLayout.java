@@ -18,11 +18,10 @@ public class MainLayout extends AppLayout {
     public MainLayout(SecurityService securityService) {
         this.securityService = securityService;
         createHeader();
-        createDrawer();
     }
 
     private void createHeader() {
-        H1 logo = new H1("Vaadin CRM");
+        H1 logo = new H1("Vaadin App");
         logo.addClassNames("text-l", "m-m");
 
         Button logout = new Button("Log out", e -> securityService.logout());
@@ -38,13 +37,5 @@ public class MainLayout extends AppLayout {
 
     }
 
-    private void createDrawer() {
-        RouterLink listLink = new RouterLink("List", ListView.class);
-        listLink.setHighlightCondition(HighlightConditions.sameLocation());
 
-        addToDrawer(new VerticalLayout(
-            listLink,
-            new RouterLink("Dashboard", DashboardView.class)
-        ));
-    }
 }
